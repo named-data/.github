@@ -105,11 +105,9 @@ for version control:
 - [ndnSIM codebase](https://github.com/named-data-ndnSIM)
 - [Other NDN codebase (REMAP)](https://github.com/remap)
 
-If you are unfamiliar with git, some kind
-of [tutorial on git](https://git-scm.com/book/en/v1/Getting-Started)
-should be your first step.
-
-There is also a [Git game](http://learngitbranching.js.org/index.html)
+If you are unfamiliar with git, some kind of
+[tutorial on git](https://git-scm.com/book/en/v2) should be your first step.
+There is also a [Git game](https://learngitbranching.js.org/index.html)
 you can play. Finally, there is a
 [wiki page](https://redmine.named-data.net/projects/nfd/wiki#Development-process)
 on NFD's Redmine that has more useful links.
@@ -191,7 +189,7 @@ help us out. Note that this link points to the newest version of the
 Boost Test library documentation, and you may need to refer to older
 documentation if you are using an older version of Boost. More
 information on this is available in the
-[NFD Developer's Guide](https://named-data.net/publications/techreports/ndn-0021-10-nfd-developer-guide/).
+[NFD Developer's Guide](https://named-data.net/publications/techreports/ndn-0021-11-nfd-guide/).
 
 When designing and writing tests, a few things need to be kept in mind:
 
@@ -430,7 +428,7 @@ There are a few things to remember when responding to code review, including:
 
 As a supplement to the code review process, every patch set is automatically
 compiled and tested on multiple platforms
-using [our instance of Jenkins](http://jenkins.named-data.net/), the
+using [our instance of Jenkins](https://jenkins.named-data.net/), the
 continuous integration system. Interacting with Jenkins is not usually
 necessary, as Jenkins automatically picks up new patch sets and posts
 the results. Typically the only interaction needed with Jenkins is
