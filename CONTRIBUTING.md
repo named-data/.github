@@ -262,42 +262,40 @@ The first-time Gerrit setup goes like this:
     methods, including GitHub OAuth. You need to ensure that you have a Gerrit username:
     1. Log in.
     2. Click on your name in the top right corner and click "Settings" in the pop-up box.
-    3. In the `Username` box, check for a name. If there's already one there, great.
+    3. In the "Username" box, check for a name. If there's already one there, great.
     4. If not, type one in, and this will be used in later steps.
 
 2.  Set up your Gerrit credentials. This will depend on how you
-    configured your Gerrit remote in step 1. Among other things, you
+    created your Gerrit account in step 1. Among other things, you
     need to set up identities so that the email on your Gerrit profile
     matches whatever email you will be committing with on your git
     repo.
     **Note:** We only support using
     [SSH access to Gerrit](https://gerrit.named-data.net/Documentation/user-upload.html#ssh).
 
-    This shows what the identities panel looks like. If you do
-    not see the email here that you have configured git to use, you
-    cannot upload to Gerrit.
-    ![Web page showing what the "identities" panel looks like](https://github.com/named-data/NFD/blob/master/docs/images/gerrit-credentials-blurred.png)
-
-    In that case, add it under contact information panel.
-    ![Web page showing what the "contact information" panel looks like](https://github.com/named-data/NFD/blob/master/docs/images/gerrit-email.png)
+    You can see all the identities associated with your profile in the "Identities"
+    section of your [Gerrit account settings](https://gerrit.named-data.net/settings/).
+    If you do not see the email here that you have configured git to use, you cannot
+    upload to Gerrit. In that case, add it under the "Email Addresses" section.
 
     Gerrit itself has
     [extensive documentation](https://gerrit.named-data.net/Documentation/error-messages.html)
     regarding error messages, and this identity-based one is by far the most
     common. This is the
-    [documentation for an identity error.](https://gerrit.named-data.net/Documentation/error-invalid-author.html)
+    [documentation for an identity error](https://gerrit.named-data.net/Documentation/error-invalid-author.html).
 
-3.  Clone the source for a project from Gerrit.
-    1. While logged in to Gerrit, there will be a link in the top-left
-       area, `Projects`.
-    2. From this project view, click on the `Clone with commit-msg
-       hook` tab.
-    3. Click on the `ssh` tab to select cloning over SSH. **Note:**
+3.  Clone the source repository for a project from Gerrit.
+    1. While logged in to Gerrit, from the top menu bar select
+       "Browse" and then "Repositories".
+    2. From this list of repositories, click on the name of the
+       repository that you want to clone locally.
+    3. Click on the "SSH" tab to select cloning over SSH. **Note:**
        This will require setting up SSH access to Gerrit first.
-    4. Copy-and-paste the `git clone ...` command into your terminal
-       to fetch the project source.
+    4. Copy-and-paste the `git clone ...` command from the "Clone
+       with commit-msg hook" box into your terminal to fetch the
+       project source.
 
-    After this, your remotes will be set up correctly, and pushing to
+    After this, your remotes will be set up automatically, and pushing to
     Gerrit will only require `git push origin HEAD:refs/for/master` after
     committing work.  This section has some
     [git tips and tricks to type less][type-less].
@@ -312,7 +310,6 @@ will need a Redmine account, which can be created there.
 After writing some changes, commit them locally as normal. After
 saving and exiting your editor, the commit hook will insert a unique
 `Change-Id` to the message.
-
 
 Once you have a commit message you are happy with, simply run `git
 push HEAD:refs/for/master`.
