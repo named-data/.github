@@ -320,7 +320,7 @@ push HEAD:refs/for/master`.
 *  Squash your various commits into one with `git rebase -i
    <initial commit>`, ensuring that the ultimate `Change-Id` in the
    commit is the one on the patch set on Gerrit. This workflow is
-   generally preferred.
+   generally preferred for more complex changes.
 *  Amend your commit with any new changes using `git commit --amend`.
 
 If you do not do this, what will happen is that each commit will be
@@ -363,17 +363,20 @@ signed in through a modern browser, you can leave a comment in a file
 either by clicking on the line number, by selecting some text you want
 to comment and pressing 'c', or by clicking on someone else's
 comment. After typing, click the `Save` button there. After navigating
-through the patch set with the arrows at the top-right of the Gerrit
-UI, you then must click the up-arrow to get back to the Change
+through the patch set with the links at the top-right of the Gerrit
+UI, you then must click the link for `Up` to get back to the Change
 screen. **At this point your comments have *not* been made yet!** You
-must then click the `Reply...` button, and assign a score. If you
+must then click the `Reply` button, and assign a score. If you
 correctly saved your comments, they will be shown at the bottom of
-that box. Once you click post, the comments will be made public to
+that box. Once you click `Send`, the comments will be made public to
 others.
 
 Minimally, a review must include:
 
--   A score (usually -1, 0, or +1)
+-   A score (usually -1, 0, or +1). +1 usually indicates you have
+    no further objections and support a merge immediately, while -1
+    is usually reserved for strong objections. Otherwise, it is
+    recommended to use 0.
 -   An "itemized" commentary on each objection you have, or a
     justification for a whole-change objection.
 
@@ -402,12 +405,11 @@ few things that you can do to to expedite the process:
 
 There are a few things to remember when responding to code review, including:
 
--  **Don't** click "Done" on a comment if you agree with a comment and
-   are updating the code accordingly. These comments are essentially
-   useless and only clutter the discussion. Gerrit has a convenient
-   mechanism to check the differences between two patch sets, so
-   reviewers are expected to check that their comments have been
-   addressed.
+-  **Do** click `Done` or tick `Resolved` on a comment if you agree
+   with it and have updated the code accordingly. This is a helpful
+   way for reviewers and developers to quickly keep track of when
+   an issue has been solved and if there are any other pending
+   comments.
 -  **Don't** blindly follow what is suggested. Review is just that: a
    review. Sometimes what is suggested is functionally equivalent to
    what you have implemented. Other times, the reviewer has not
@@ -418,8 +420,8 @@ There are a few things to remember when responding to code review, including:
 -  **How** to reply. To reply to a comment, click on the comment in
    the Gerrit interface, type your reply, and then press save. After
    replying, you **must remember** to go to the main patch set change
-   screen, and press `Reply...`. Your comments will be shown as
-   drafts, and you must click `Post` to make them visible to others.
+   screen, and press `Reply`. Your comments will be shown as
+   drafts, and you must click `Send` to make them visible to others.
 
 ### Jenkins ###
 
@@ -430,6 +432,8 @@ continuous integration system. Interacting with Jenkins is not usually
 necessary, as Jenkins automatically picks up new patch sets and posts
 the results. Typically the only interaction needed with Jenkins is
 when some kind of glitch occurs and a build needs to be retriggered.
+This can be done from the web interface, though please refrain from
+doing unless a failure is due to a glitch.
 
 It is expected that code is checked locally. Reviewers may wait until
 Jenkins checks the code before doing a more functional review of the
