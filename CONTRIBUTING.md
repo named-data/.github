@@ -317,15 +317,15 @@ push HEAD:refs/for/master`.
 **Note:** Gerrit separates commits into patch sets by the unique
 `Change-Id`s. As a result, you must either:
 
+*  Amend your commit with any new changes using `git commit --amend`.
 *  Squash your various commits into one with `git rebase -i
    <initial commit>`, ensuring that the ultimate `Change-Id` in the
    commit is the one on the patch set on Gerrit. This workflow is
-   generally preferred for more complex changes.
-*  Amend your commit with any new changes using `git commit --amend`.
+   intended for more complex changes and is generally not recommended
+   unless the specific need arises.
 
-If you do not do this, what will happen is that each commit will be
-interpreted by Gerrit as a separate patch set. This is probably not
-what you want.
+If you do not do this, each separate commit will be interpreted by Gerrit
+as a separate patch set. This is likely not what you want.
 
 ### Code Review ###
 
@@ -374,9 +374,10 @@ others.
 Minimally, a review must include:
 
 -   A score (usually -1, 0, or +1). +1 usually indicates you have
-    no further objections and support a merge immediately, while -1
-    is usually reserved for strong objections. Otherwise, it is
-    recommended to use 0.
+    no further objections and support a merge , while -1 is
+    usually reserved for strong objections or blockers to merging.
+    A score of 0 can be used to indicate minor comments that should
+    still be resolved before merging.
 -   An "itemized" commentary on each objection you have, or a
     justification for a whole-change objection.
 
@@ -432,13 +433,15 @@ continuous integration system. Interacting with Jenkins is not usually
 necessary, as Jenkins automatically picks up new patch sets and posts
 the results. Typically the only interaction needed with Jenkins is
 when some kind of glitch occurs and a build needs to be retriggered.
-This can be done from the web interface, though please refrain from
-doing unless a failure is due to a glitch.
+These glitches can include spurious test failures stemming from clock
+desynchronization or other similar issues that crop up on occasion.
+Retriggering these tests can be done from the web interface, though
+please refrain from doing so unless a failure is due to a glitch.
 
-It is expected that code is checked locally. Reviewers may wait until
-Jenkins checks the code before doing a more functional review of the
-code. Since Jenkins checks can take a while, you can save some time by
-checking yourself first.
+It is expected that code is tested locally. Reviewers may wait until
+Jenkins checks and approves the code before doing a more thorough review
+of the code. Since Jenkins checks can take a while, you can save some time
+by checking yourself first.
 
 ### Gerrit Change-Id Commit Hook ###
 
